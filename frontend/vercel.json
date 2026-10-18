@@ -1,0 +1,10 @@
+{
+  "framework": "nextjs",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/api/backend/:path*",
+      "destination": "https://littrust-backend.onrender.com/api/:path*"
+    }
+  ]
+}

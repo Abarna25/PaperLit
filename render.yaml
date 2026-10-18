@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: littrust-backend
+    env: python
+    region: oregon
+    plan: starter
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.6
+      - key: APP_ENV
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: CROSSREF_MAILTO
+        value: researcher@littrust.ai
+      - key: SUPABASE_STORAGE_BUCKET
+        value: littrust-artifacts
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SEMANTIC_SCHOLAR_API_KEY
+        sync: false
+      - key: FRONTEND_ORIGIN
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        value: '["https://*.vercel.app", "http://localhost:3000"]'
